@@ -42,4 +42,21 @@ export const Div_Styled = styled.div`
         font-size: 0.7rem;
         color: #808080;
     }
+    
+    div {
+        height: 2rem;
+        width: 100%;
+        border-radius: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        background-color: #808080;
+    }
+
+    svg {
+        cursor: pointer;
+    }
 `;

@@ -9,7 +9,7 @@ export const List = () => {
     const categoriesVideos = videos.map(element => element.category);
     const categoriesVideosFiltred = categoriesVideos.filter(function(ele , pos){
         return categoriesVideos.indexOf(ele) == pos;
-    }) 
+    }); 
 
     return (
         <SectionList_Styled>

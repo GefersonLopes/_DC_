@@ -1,14 +1,27 @@
-import { ReactNode } from "react";
+import { MutableRefObject, ReactNode } from "react";
 
 interface dataInterface {
     playerList: ItemPlayer[];
+    
     setPlayerList: (value: ItemPlayer[]) => void;
     filterPlayerList: (value: string) => void;
-    urlVideo: string;
     setUrlVideo:(value: string) => void;
+    
+    urlVideo: string;
+    timeVideo: number;
+    
     TheaterMode: () => void;
     NormalMode: () => void;
     PlayPausePlayer: () => void;
+    FullScreen: () => void;
+    PlaybackSpeed: () => void;
+    VideoVolume: () => void;
+    $videoplayer: MutableRefObject<any>
+    setTimeVideo: (value: number) => void;
+    durationVideo: number;
+    setDurationVideo: (value: number) => void;
+    porcentageVideo: number;
+    setPorcentageVideo: (value: number) => void;
 }
 
 export interface Auth {

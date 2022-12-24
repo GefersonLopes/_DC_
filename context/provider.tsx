@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect, useRef, MutableRefObject } from "react";
 import { Auth, IReactNode, ItemPlayer } from "../interfaces/IContexts";
 import { videos } from "../pages/api/hello";
 
@@ -8,8 +8,12 @@ const AuthProvider = ({ children }: IReactNode) => {
     const url =
         "https://player.vimeo.com/external/579933573.sd.mp4?s=baf4f2f350e3e65cb38ee64f4491324f3b4ef306&profile_id=165&oauth2_token_id=57447761";
 
+    const $videoplayer: MutableRefObject<null> = useRef(null);
     const [playerList, setPlayerList] = useState(videos);
     const [urlVideo, setUrlVideo] = useState(url);
+    const [timeVideo, setTimeVideo] = useState(0);
+    const [durationVideo, setDurationVideo] = useState(0);
+    const [porcentageVideo, setPorcentageVideo] = useState(0);
 
     const filterPlayerList = (category: string): void => {
         let filteredList = videos.filter(
@@ -21,36 +25,57 @@ const AuthProvider = ({ children }: IReactNode) => {
         setPlayerList(filteredList);
     };
 
-    const NormalMode = () => {
+    const NormalMode = (): void => {
         // Torna o reprodutor do vídeo no modo normal
+        const videoPlayer = document.querySelector("video");
         const buttonNormal = document.getElementById("Btn_normal");
         buttonNormal!.style.display = "none";
         const buttonCine = document.getElementById("Btn_cine");
         buttonCine!.style.display = "initial";
 
-        const videoPlayer = document.querySelector("video");
         videoPlayer!.style.width = "65vw";
         const main = document.querySelector("main");
         main!.style.flexDirection = "row";
     };
-    
-    const TheaterMode = () => {
+
+    const TheaterMode = (): void => {
         // Torna o reprodutor do vídeo no modo teatro
         const buttonNormal = document.getElementById("Btn_normal");
         buttonNormal!.style.display = "initial";
         const buttonCine = document.getElementById("Btn_cine");
         buttonCine!.style.display = "none";
-        
+
         const videoPlayer = document.querySelector("video");
         videoPlayer!.style.width = "100vw";
         const main = document.querySelector("main");
         main!.style.flexDirection = "column";
     };
-    // onTimeUpdate
-    const PlayPausePlayer = () => {
+
+    const PlayPausePlayer = (): void => {
         const videoPlayer = document.querySelector("video");
         videoPlayer!.paused ? videoPlayer!.play() : videoPlayer!.pause();
+
     };
+
+
+    const FullScreen = (): void => {
+        const videoPlayer = document.querySelector("video");
+        videoPlayer?.requestFullscreen && videoPlayer!.requestFullscreen();
+    };
+
+    const PlaybackSpeed = (): void => {
+        const videoPlayer = document.querySelector("video");
+        const select = document.querySelector("select");
+
+        videoPlayer!.playbackRate = Number(select!.value);
+    };
+
+    const VideoVolume = (): void => {
+        const videoPlayer = document.querySelector("video");
+        const input = document.querySelector("input");
+        videoPlayer!.volume = Number(input!.value) / 100;
+    };
+
 
     const contextValue = {
         data: {
@@ -61,7 +86,17 @@ const AuthProvider = ({ children }: IReactNode) => {
             setUrlVideo,
             TheaterMode,
             NormalMode,
-            PlayPausePlayer
+            PlayPausePlayer,
+            FullScreen,
+            PlaybackSpeed,
+            VideoVolume,
+            timeVideo,
+            $videoplayer,
+            setTimeVideo,
+            durationVideo,
+            setDurationVideo,
+            porcentageVideo,
+            setPorcentageVideo,
         },
     };
 
