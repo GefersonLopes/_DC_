@@ -1,5 +1,5 @@
-import { useState, createContext, useEffect, useRef, MutableRefObject } from "react";
-import { Auth, IReactNode, ItemPlayer } from "../interfaces/IContexts";
+import { useState, createContext, useRef, MutableRefObject } from "react";
+import { Auth, IReactNode } from "../interfaces/IContexts";
 import { videos } from "../pages/api/hello";
 
 export const AuthContext = createContext({} as Auth);

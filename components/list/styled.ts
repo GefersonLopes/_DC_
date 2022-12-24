@@ -19,11 +19,11 @@ export const SectionList_Styled = styled.section`
         button {
             height: 2.2rem;
 
-            color: #fff;
-            background-color: #808080;
+            color: #cccccc;
+            background-color: #333333;
 
-            border: solid 0.7px #fff;
-            border-radius: 50px !important;
+            border: none;
+            border-radius: 10px;
             padding: 0.5rem 0.8rem !important;
 
             font-family: Roboto;
@@ -31,8 +31,8 @@ export const SectionList_Styled = styled.section`
         }
 
         .checked {
-            background-color: #fff;
-            color: #000;
+            background-color: #cccccc;
+            color: #333333;
         }
     }
 
@@ -69,28 +69,29 @@ export const PlayerList_Styled = styled.ul`
         img {
             width: 10rem;
             height: 6rem;
+            border-radius: 7px;
         }
 
         h3 {
             margin-top: 0.5rem;
             font-size: 1rem;
             font-weight: 100;
-            color: rgb(255, 255, 255, 0.8);
+            color: #cccccc;
         }
 
         p {
             font-size: 0.9rem;
-            color: rgb(255, 255, 255, 0.4);
+            color: #cccccc;
         }
 
         span {
             font-size: 0.9rem;
-            color: rgb(255, 255, 255, 0.4);
+            color: #cccccc;
         }
 
         button {
             margin-top: 0.5rem;
-            background-color:  rgb(255, 255, 255, 0.4);
+            background-color:  #333333;
             border: none;
             color: #fff;
         }
