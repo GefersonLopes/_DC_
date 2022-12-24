@@ -14,6 +14,8 @@ const AuthProvider = ({ children }: IReactNode) => {
     const [timeVideo, setTimeVideo] = useState(0);
     const [durationVideo, setDurationVideo] = useState(0);
     const [porcentageVideo, setPorcentageVideo] = useState(0);
+    const [ isStop, setIsStop] = useState(false);
+    const [ volume, setVolume] = useState(0);
 
     const filterPlayerList = (category: string): void => {
         let filteredList = videos.filter(
@@ -54,6 +56,7 @@ const AuthProvider = ({ children }: IReactNode) => {
     const PlayPausePlayer = (): void => {
         const videoPlayer = document.querySelector("video");
         videoPlayer!.paused ? videoPlayer!.play() : videoPlayer!.pause();
+        setIsStop(!isStop);
 
     };
 
@@ -74,8 +77,13 @@ const AuthProvider = ({ children }: IReactNode) => {
         const videoPlayer = document.querySelector("video");
         const input = document.querySelector("input");
         videoPlayer!.volume = Number(input!.value) / 100;
+        
     };
-
+    
+    const viewVolume = (): void => {
+        const input = document.querySelector("input");
+        setVolume(Number(input!.value) / 100);
+    };
 
     const contextValue = {
         data: {
@@ -97,6 +105,8 @@ const AuthProvider = ({ children }: IReactNode) => {
             setDurationVideo,
             porcentageVideo,
             setPorcentageVideo,
+            isStop,
+            setIsStop,
         },
     };
 

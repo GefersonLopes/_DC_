@@ -3,8 +3,8 @@ import { AuthContext } from "../../context/provider";
 import { Div_Styled } from "./styled";
 
 import { TfiLayoutWidthDefault, TfiLayoutWidthFull } from "react-icons/tfi";
-import { BsFillPlayFill } from "react-icons/bs";
-import { BiFullscreen, BiVolumeFull } from "react-icons/bi";
+import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
+import { BiFullscreen, BiVolumeFull, BiVolumeMute } from "react-icons/bi";
 
 export const Player = () => {
     const { data } = useContext(AuthContext);
@@ -31,13 +31,20 @@ export const Player = () => {
                     value={(data.timeVideo / data.durationVideo) * 100}
                 />
                 <div className="playerConfig">
-                    <BsFillPlayFill
-                        id="Btn_play"
-                        onClick={() => data.PlayPausePlayer()}
-                    />
+                    {data.isStop ? (
+                        <BsFillPlayFill
+                            id="Btn_play"
+                            onClick={() => data.PlayPausePlayer()}
+                        />
+                    ) : (
+                        <BsFillPauseFill
+                            id="Btn_play"
+                            onClick={() => data.PlayPausePlayer()}
+                        />
+                    )}
 
                     <BiVolumeFull id="volumeSvg" />
-                    <input
+                                        <input
                         id="volumeInput"
                         type="range"
                         onClick={() => data.VideoVolume()}
@@ -83,7 +90,7 @@ export const Player = () => {
                     </section>
                 </div>
 
-                <h2>O café saindo fumaça - Feito pela minha coroa mano</h2>
+                <h2>O café saindo fumaça - O vídeo não tem audio, mas a função de audio funciona ;)</h2>
                 <p>62 mil visualizações . há 5 dias</p>
             </Div_Styled>
         </>

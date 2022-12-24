@@ -22,6 +22,8 @@ interface dataInterface {
     setDurationVideo: (value: number) => void;
     porcentageVideo: number;
     setPorcentageVideo: (value: number) => void;
+    isStop: boolean;
+    setIsStop: (value: boolean) => void;
 }
 
 export interface Auth {

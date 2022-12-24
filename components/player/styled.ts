@@ -41,6 +41,7 @@ export const Div_Styled = styled.div`
         }
     }
 
+
     h2 {
         margin-left: 0.5rem;
         margin-top: 0.5rem;
